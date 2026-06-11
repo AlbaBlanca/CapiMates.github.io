@@ -20,7 +20,6 @@ body {
     text-align: center;
 }
 
-/* --- Ajustes Selección Múltiple (Grid de Tarjetas) --- */
 .selector-operaciones {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -59,7 +58,6 @@ body {
     font-weight: bold;
 }
 
-/* Estado cuando la casilla está seleccionada */
 .tarjeta-op input:checked + .icono-op {
     background-color: #ccfbf1;
     color: #0d9488;
@@ -102,7 +100,6 @@ body {
     width: 90%;
 }
 
-/* --- Pizarra y Visuales --- */
 .contenedor-progreso {
     background-color: #f1f5f9;
     border-radius: 12px;
@@ -149,7 +146,6 @@ body {
     margin: 5px 0;
 }
 
-/* --- Teclado Numérico Integrado --- */
 .teclado-pantalla {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -188,7 +184,6 @@ body {
     border-color: #047857;
 }
 
-/* --- Estados Animados de la Capibara Dulce --- */
 .area-capibara {
     position: relative;
     width: 220px;
@@ -207,12 +202,10 @@ body {
     transition: transform 0.15s ease-out;
 }
 
-/* Por defecto, los vectores felices están escondidos */
 #capi-ojo-feliz, #capi-boca-feliz {
     display: none;
 }
 
-/* Cuando se activa la clase 'feliz' cambiamos las expresiones y salta */
 .area-capibara.feliz #capibara-svg {
     transform: scale(1.12) translateY(-8px);
 }
