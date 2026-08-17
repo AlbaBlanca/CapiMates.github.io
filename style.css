@@ -1,14 +1,19 @@
 :root {
-    --primary-color: #4CAF50;
-    --secondary-color: #FFC107;
-    --background: #F0F8FF;
-    --text-color: #333;
-    --error-color: #F44336;
+    --primary-color: #FF9AA2; /* Rosa pastís */
+    --secondary-color: #FFDAC1; /* Préssec pastís */
+    --success-color: #B5EAD7; /* Verd menta */
+    --error-color: #FFB7B2; /* Vermell fluix */
+    --background: #E2F0CB; /* Verd llima molt clar */
+    --text-color: #555;
+    --button-shadow: #d18289;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Comic Sans MS', 'Chalkboard SE', 'Segoe UI', sans-serif; /* Tipografia més infantil */
     background-color: var(--background);
+    background-image: radial-gradient(#fff 15%, transparent 16%), radial-gradient(#fff 15%, transparent 16%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px; /* Patró de punts divertit */
     color: var(--text-color);
     display: flex;
     justify-content: center;
@@ -19,98 +24,134 @@ body {
 
 #app-container {
     background: white;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
     width: 90%;
-    max-width: 500px;
+    max-width: 450px;
     padding: 30px;
     text-align: center;
-    /* Aquí pots afegir una imatge de fons creada amb Canva */
+    border: 5px solid white;
 }
 
-.screen {
-    display: none;
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn 0.5s; }
+
+/* Mascotes i Emojis */
+.mascot { font-size: 5rem; margin-bottom: -10px; }
+.mascot-small { font-size: 3rem; }
+
+h1, h2 { color: #FF8BA7; font-size: 2.2rem; margin-bottom: 10px;}
+
+.settings-panel {
+    background-color: #f9f9f9;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-.screen.active {
-    display: block;
+.max-limit-group {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 1.2rem;
 }
 
-h1, h2 {
-    color: var(--primary-color);
+.max-limit-group input {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+    width: 80px;
+    border-radius: 10px;
+    border: 2px solid var(--primary-color);
+    text-align: center;
+    font-family: inherit;
 }
 
 .options {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin: 20px 0;
+    gap: 12px;
     text-align: left;
-    padding-left: 20%;
+    padding-left: 15%;
 }
 
-.options label {
-    font-size: 1.2rem;
-    cursor: pointer;
-}
+.options label { font-size: 1.2rem; cursor: pointer; }
 
 .btn-primary {
     background-color: var(--primary-color);
     color: white;
     border: none;
     padding: 15px 30px;
-    font-size: 1.2rem;
-    border-radius: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    border-radius: 20px;
     cursor: pointer;
-    transition: transform 0.2s;
+    box-shadow: 0 6px 0 var(--button-shadow);
+    transition: all 0.1s;
+    width: 100%;
 }
 
-.btn-primary:hover {
-    transform: scale(1.05);
+.btn-primary:active {
+    transform: translateY(6px);
+    box-shadow: 0 0px 0 var(--button-shadow);
 }
 
 #operation-display {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
-    margin: 20px 0;
-    color: #2c3e50;
+    margin: 15px 0;
+    color: #4A4E69;
+    background: #F8EDEB;
+    border-radius: 20px;
+    padding: 15px;
 }
 
 #user-answer {
-    color: var(--primary-color);
+    color: #FF8BA7;
     min-width: 60px;
     display: inline-block;
-    border-bottom: 4px solid var(--primary-color);
+    border-bottom: 5px dashed #FF8BA7;
 }
 
 .numpad {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 12px;
     margin: 20px 0;
 }
 
 .num-btn {
-    background-color: #e0e0e0;
-    border: none;
-    padding: 20px;
-    font-size: 1.5rem;
-    border-radius: 10px;
+    background-color: white;
+    border: 3px solid #eee;
+    padding: 15px;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border-radius: 15px;
     cursor: pointer;
+    color: #555;
+    box-shadow: 0 4px 0 #eee;
+    transition: all 0.1s;
+    font-family: inherit;
 }
 
 .num-btn:active {
-    background-color: #ccc;
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 #eee;
 }
 
-.action-btn {
-    background-color: var(--secondary-color);
-    font-size: 1.1rem;
-    font-weight: bold;
-}
+.action-btn { font-size: 1.1rem; }
+.clear-btn { background-color: var(--secondary-color); border-color: #E5C3A6; box-shadow: 0 4px 0 #E5C3A6; }
+.submit-btn { background-color: var(--success-color); border-color: #9DCCBB; box-shadow: 0 4px 0 #9DCCBB; }
 
 #feedback-message {
     font-size: 1.5rem;
     font-weight: bold;
     min-height: 40px;
+    margin-top: 10px;
 }
+
+/* Animacions de Gamificació */
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+
+.anim-bounce { animation: bounce 0.5s; }
+.anim-shake { animation: shake 0.5s; }
