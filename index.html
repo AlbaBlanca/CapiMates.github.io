@@ -10,7 +10,8 @@
     <div id="app-container">
         <!-- PANTALLA D'INICI -->
         <div id="screen-start" class="screen active">
-            <div class="mascot" id="start-mascot">🐉</div>
+            <!-- Capibara Content a l'inici -->
+            <img class="mascot" id="start-mascot" src="capi.content.png" alt="Capibara feliç">
             <h1>CapiMates!</h1>
             <p>Selecciona el teu repte d'avui:</p>
             
@@ -37,7 +38,8 @@
                 <div class="progress-bar">
                     <span id="progress-text">Activitat 1 / 10</span>
                 </div>
-                <div class="mascot-small" id="game-mascot">🤔</div>
+                <!-- Capibara Dinàmic durant el joc (comença esperant) -->
+                <img class="mascot-small" id="game-mascot" src="capi.espera.png" alt="Capibara pensant">
             </div>
 
             <div class="game-area">
@@ -68,7 +70,8 @@
 
         <!-- PANTALLA DE RESULTATS -->
         <div id="screen-results" class="screen">
-            <div class="mascot" id="result-mascot">🎉</div>
+            <!-- Capibara Dinàmic per al resultat -->
+            <img class="mascot" id="result-mascot" src="capi.content.png" alt="Capibara resultat">
             <h2>Sessió completada!</h2>
             <div class="score-display">
                 <p>Has encertat <span id="final-score"></span> de 10 activitats.</p>
@@ -78,7 +81,6 @@
         </div>
     </div>
 
-    <!-- AUDIO ELEMENTS (Utilitzarem sons sintetitzats per JS per no dependre de fitxers externs de moment) -->
     <script src="script.js"></script>
 </body>
 </html>
