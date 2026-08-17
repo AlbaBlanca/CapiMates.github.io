@@ -4,7 +4,7 @@ const totalQuestions = 10;
 let score = 0;
 let correctAnswer = 0;
 let currentAnswerStr = "";
-let maxResultLimit = 100; // Límit per defecte
+let maxResultLimit = 100;
 
 const screenStart = document.getElementById('screen-start');
 const screenGame = document.getElementById('screen-game');
@@ -54,9 +54,8 @@ document.getElementById('btn-start').addEventListener('click', () => {
     if(document.getElementById('op-mul').checked) selectedOps.push('*');
     if(document.getElementById('op-div').checked) selectedOps.push('/');
 
-    // Llegir el límit màxim triat per l'usuari
     maxResultLimit = parseInt(document.getElementById('max-result').value) || 100;
-    if (maxResultLimit < 10) maxResultLimit = 10; // Mínim de seguretat
+    if (maxResultLimit < 10) maxResultLimit = 10;
 
     if (selectedOps.length === 0) {
         alert("Si us plau, selecciona almenys una operació.");
@@ -69,36 +68,33 @@ document.getElementById('btn-start').addEventListener('click', () => {
     showScreen(screenGame);
 });
 
-// Lògica matemàtica controlada pel límit màxim
 function generateQuestion() {
     currentAnswerStr = "";
     userAnswerDisplay.textContent = "?";
     feedbackMessage.textContent = "";
     progressText.textContent = `Activitat ${currentQuestion} de ${totalQuestions}`;
-    gameMascot.textContent = "🤔"; // Mascota pensant
-    gameMascot.className = "mascot-small"; // Reset animació
+    
+    // Tornem a posar el Capibara en estat d'espera
+    gameMascot.src = "capi.espera.png"; 
+    gameMascot.className = "mascot-small"; // Reiniciem animacions
 
     const op = selectedOps[Math.floor(Math.random() * selectedOps.length)];
     let num1, num2;
 
     switch(op) {
         case '+':
-            // num1 + num2 <= maxResultLimit
             num1 = Math.floor(Math.random() * (maxResultLimit - 1)) + 1;
             num2 = Math.floor(Math.random() * (maxResultLimit - num1)) + 1;
             correctAnswer = num1 + num2;
             document.getElementById('operator').textContent = '+';
             break;
         case '-':
-            // num1 <= maxResultLimit, i resultat sempre positiu
             num1 = Math.floor(Math.random() * maxResultLimit) + 1;
             num2 = Math.floor(Math.random() * num1); 
             correctAnswer = num1 - num2;
             document.getElementById('operator').textContent = '-';
             break;
         case '*':
-            // num1 * num2 <= maxResultLimit
-            // Limitem num1 a un màxim lògic per edat (ex: 12) o a la meitat del limit
             let maxFactor = Math.min(12, Math.floor(maxResultLimit / 2));
             num1 = Math.floor(Math.random() * (maxFactor - 1)) + 2;
             let maxFactor2 = Math.floor(maxResultLimit / num1);
@@ -107,8 +103,6 @@ function generateQuestion() {
             document.getElementById('operator').textContent = 'x';
             break;
         case '/':
-            // Evitar decimals i respectar límit
-            // Decidim un divisor (num2) i un resultat. num1 = num2 * resultat. num1 <= maxResultLimit
             let maxDivisor = Math.min(12, Math.floor(maxResultLimit / 2));
             num2 = Math.floor(Math.random() * (maxDivisor - 1)) + 2; 
             let maxRes = Math.floor(maxResultLimit / num2);
@@ -148,14 +142,16 @@ function checkAnswer() {
     if (numAnswer === correctAnswer) {
         score++;
         playSound('success');
-        gameMascot.textContent = "🥳"; // Canvi d'expressió
+        // Capibara Content + Animació Salt
+        gameMascot.src = "capi.content.png";
         gameMascot.classList.add('anim-bounce');
         feedbackMessage.style.color = "#4CAF50";
         feedbackMessage.textContent = "Genial!";
         setTimeout(nextQuestion, 1200); 
     } else {
         playSound('error');
-        gameMascot.textContent = "😅";
+        // Capibara Trist + Animació Tremolor
+        gameMascot.src = "capi.trist.png";
         gameMascot.classList.add('anim-shake');
         feedbackMessage.style.color = "#F44336";
         feedbackMessage.textContent = `Era ${correctAnswer}. Seguim!`;
@@ -178,15 +174,14 @@ function finishGame() {
     const resultMessage = document.getElementById('result-message');
     const resultMascot = document.getElementById('result-mascot');
     
-    // Els usuaris han d'obtenir almenys un 80 per cent per passar al següent nivell
     if (score >= 8) {
         playSound('success');
-        resultMascot.textContent = "🏆";
+        resultMascot.src = "capi.content.png"; // Feliç si supera el nivell
         resultMessage.textContent = "Nivell superat! Ets un/a crac!";
         resultMessage.style.color = "#4CAF50";
     } else {
         playSound('error');
-        resultMascot.textContent = "💪";
+        resultMascot.src = "capi.espera.png"; // Mode d'ànim per intentar-ho de nou (evitem posar-lo trist al final)
         resultMessage.textContent = "Bona feina! Segueix practicant i ho aconseguiràs.";
         resultMessage.style.color = "#FF8BA7";
     }
