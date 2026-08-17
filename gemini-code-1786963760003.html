@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repte Matemàtic</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <!-- PANTALLA D'INICI -->
+        <div id="screen-start" class="screen active">
+            <h1>Tria el teu repte!</h1>
+            <p>Selecciona les operacions que vols practicar:</p>
+            <div class="options">
+                <label><input type="checkbox" id="op-add" value="+" checked> Sumes (+)</label>
+                <label><input type="checkbox" id="op-sub" value="-"> Restes (-)</label>
+                <label><input type="checkbox" id="op-mul" value="*"> Multiplicacions (x)</label>
+                <label><input type="checkbox" id="op-div" value="/"> Divisions (÷)</label>
+            </div>
+            <button id="btn-start" class="btn-primary">Començar</button>
+        </div>
+
+        <!-- PANTALLA DE JOC -->
+        <div id="screen-game" class="screen">
+            <div class="progress-bar">
+                <span id="progress-text">Activitat 1 de 10</span>
+            </div>
+            <div class="game-area">
+                <div id="operation-display">
+                    <span id="num1"></span> 
+                    <span id="operator"></span> 
+                    <span id="num2"></span> = 
+                    <span id="user-answer">?</span>
+                </div>
+                
+                <!-- TECLAT NUMÈRIC -->
+                <div class="numpad">
+                    <button class="num-btn">1</button>
+                    <button class="num-btn">2</button>
+                    <button class="num-btn">3</button>
+                    <button class="num-btn">4</button>
+                    <button class="num-btn">5</button>
+                    <button class="num-btn">6</button>
+                    <button class="num-btn">7</button>
+                    <button class="num-btn">8</button>
+                    <button class="num-btn">9</button>
+                    <button class="num-btn action-btn" id="btn-clear">Esborrar</button>
+                    <button class="num-btn">0</button>
+                    <button class="num-btn action-btn" id="btn-submit">Ok</button>
+                </div>
+                <div id="feedback-message"></div>
+            </div>
+        </div>
+
+        <!-- PANTALLA DE RESULTATS -->
+        <div id="screen-results" class="screen">
+            <h2>Sessió completada!</h2>
+            <div class="score-display">
+                <p>Has encertat <span id="final-score"></span> de 10 activitats.</p>
+                <p id="result-message"></p>
+            </div>
+            <button id="btn-restart" class="btn-primary">Tornar a jugar</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

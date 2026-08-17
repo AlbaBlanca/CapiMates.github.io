@@ -1,0 +1,116 @@
+:root {
+    --primary-color: #4CAF50;
+    --secondary-color: #FFC107;
+    --background: #F0F8FF;
+    --text-color: #333;
+    --error-color: #F44336;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#app-container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 90%;
+    max-width: 500px;
+    padding: 30px;
+    text-align: center;
+    /* Aquí pots afegir una imatge de fons creada amb Canva */
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 20px 0;
+    text-align: left;
+    padding-left: 20%;
+}
+
+.options label {
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-primary:hover {
+    transform: scale(1.05);
+}
+
+#operation-display {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+
+#user-answer {
+    color: var(--primary-color);
+    min-width: 60px;
+    display: inline-block;
+    border-bottom: 4px solid var(--primary-color);
+}
+
+.numpad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.num-btn {
+    background-color: #e0e0e0;
+    border: none;
+    padding: 20px;
+    font-size: 1.5rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.num-btn:active {
+    background-color: #ccc;
+}
+
+.action-btn {
+    background-color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+#feedback-message {
+    font-size: 1.5rem;
+    font-weight: bold;
+    min-height: 40px;
+}
