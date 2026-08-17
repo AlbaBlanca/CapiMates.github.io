@@ -3,29 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repte Matemàtic</title>
+    <title>CapiMates - Repte Matemàtic!</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app-container">
         <!-- PANTALLA D'INICI -->
         <div id="screen-start" class="screen active">
-            <h1>Tria el teu repte!</h1>
-            <p>Selecciona les operacions que vols practicar:</p>
-            <div class="options">
-                <label><input type="checkbox" id="op-add" value="+" checked> Sumes (+)</label>
-                <label><input type="checkbox" id="op-sub" value="-"> Restes (-)</label>
-                <label><input type="checkbox" id="op-mul" value="*"> Multiplicacions (x)</label>
-                <label><input type="checkbox" id="op-div" value="/"> Divisions (÷)</label>
+            <div class="mascot" id="start-mascot">🐉</div>
+            <h1>CapiMates!</h1>
+            <p>Selecciona el teu repte d'avui:</p>
+            
+            <div class="settings-panel">
+                <div class="max-limit-group">
+                    <label for="max-result">Resultat màxim:</label>
+                    <input type="number" id="max-result" value="100" min="10" max="1000">
+                </div>
+                
+                <div class="options">
+                    <label><input type="checkbox" id="op-add" value="+" checked> ➕ Sumes</label>
+                    <label><input type="checkbox" id="op-sub" value="-"> ➖ Restes</label>
+                    <label><input type="checkbox" id="op-mul" value="*"> ✖️ Multiplicacions</label>
+                    <label><input type="checkbox" id="op-div" value="/"> ➗ Divisions</label>
+                </div>
             </div>
-            <button id="btn-start" class="btn-primary">Començar</button>
+            
+            <button id="btn-start" class="btn-primary">A Jugar! 🚀</button>
         </div>
 
         <!-- PANTALLA DE JOC -->
         <div id="screen-game" class="screen">
-            <div class="progress-bar">
-                <span id="progress-text">Activitat 1 de 10</span>
+            <div class="header-game">
+                <div class="progress-bar">
+                    <span id="progress-text">Activitat 1 / 10</span>
+                </div>
+                <div class="mascot-small" id="game-mascot">🤔</div>
             </div>
+
             <div class="game-area">
                 <div id="operation-display">
                     <span id="num1"></span> 
@@ -34,7 +48,6 @@
                     <span id="user-answer">?</span>
                 </div>
                 
-                <!-- TECLAT NUMÈRIC -->
                 <div class="numpad">
                     <button class="num-btn">1</button>
                     <button class="num-btn">2</button>
@@ -45,9 +58,9 @@
                     <button class="num-btn">7</button>
                     <button class="num-btn">8</button>
                     <button class="num-btn">9</button>
-                    <button class="num-btn action-btn" id="btn-clear">Esborrar</button>
+                    <button class="num-btn action-btn clear-btn" id="btn-clear">Esborrar</button>
                     <button class="num-btn">0</button>
-                    <button class="num-btn action-btn" id="btn-submit">Ok</button>
+                    <button class="num-btn action-btn submit-btn" id="btn-submit">Ok!</button>
                 </div>
                 <div id="feedback-message"></div>
             </div>
@@ -55,14 +68,17 @@
 
         <!-- PANTALLA DE RESULTATS -->
         <div id="screen-results" class="screen">
+            <div class="mascot" id="result-mascot">🎉</div>
             <h2>Sessió completada!</h2>
             <div class="score-display">
                 <p>Has encertat <span id="final-score"></span> de 10 activitats.</p>
                 <p id="result-message"></p>
             </div>
-            <button id="btn-restart" class="btn-primary">Tornar a jugar</button>
+            <button id="btn-restart" class="btn-primary">Tornar a jugar 🔄</button>
         </div>
     </div>
+
+    <!-- AUDIO ELEMENTS (Utilitzarem sons sintetitzats per JS per no dependre de fitxers externs de moment) -->
     <script src="script.js"></script>
 </body>
 </html>
