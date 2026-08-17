@@ -37,8 +37,19 @@ body {
 .screen.active { display: block; animation: fadeIn 0.5s; }
 
 /* Mascotes i Emojis */
-.mascot { font-size: 5rem; margin-bottom: -10px; }
-.mascot-small { font-size: 3rem; }
+.mascot { 
+    margin-bottom: -10px; 
+    display: inline-block;
+}
+.mascot, #start-mascot, #result-mascot {
+    width: 140px; 
+    height: auto;
+}
+.mascot-small { 
+    width: 90px; 
+    height: auto;
+    transition: transform 0.2s; /* Fa que les animacions siguin més suaus */
+}
 
 h1, h2 { color: #FF8BA7; font-size: 2.2rem; margin-bottom: 10px;}
 
